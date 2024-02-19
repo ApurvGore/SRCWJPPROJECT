@@ -1,5 +1,6 @@
 package com.cdac.entity;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name="employees")
-public class Employee {
+public class Employee implements UserDetails{
 
 	@Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +36,8 @@ public class Employee {
 	
 	@OneToMany(mappedBy = "employeeH")
 	private List<OrderHistory> orderHistory;
+	
+	private boolean enabled = true;
 
 
 	public List<Order> getOrders() {
@@ -89,6 +95,42 @@ public class Employee {
 
 	public void setContact(long contact) {
 		this.contact = contact;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return enabled;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return enabled;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return enabled;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return enabled;
 	}
 	
 }

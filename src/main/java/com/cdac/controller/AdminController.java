@@ -29,7 +29,6 @@ public class AdminController {
 			status.setMessageIfAny("Login successful!");
 			status.setAdminId(admin.getAdmin_id());
 			status.setName(admin.getAdminName());
-			//status.setCustomer(customer);
 			System.out.println(admin.getAdmin_id()+" "+admin.getAdminName()+" "+admin.getContact());
 			return status;
 		}

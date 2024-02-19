@@ -1,8 +1,6 @@
 package com.cdac.dto;
 
 public class ItemStatus {
-	
-	
 
 		private boolean status;
 		private String statusMessage;
@@ -12,7 +10,6 @@ public class ItemStatus {
 		private String itemName;
 		private double itemPrice;
 		private String itemImage;
-		
 		
 		public String getItemImage() {
 			return itemImage;
